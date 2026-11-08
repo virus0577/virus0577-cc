@@ -1,0 +1,8 @@
+name = "virus0577-cc"
+main = "_worker.js"
+compatibility_date = "2025-11-04"
+keep_vars = true
+
+[[kv_namespaces]]
+binding = "KV"
+id = "94a1472db0314cf986bf7b502ff01308"

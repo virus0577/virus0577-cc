@@ -1,0 +1,25 @@
+name: Sync _worker.js from upstream
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download latest _worker.js from cmliu/edgetunnel main
+        run: |
+          curl -fsSL -o _worker.js https://raw.githubusercontent.com/cmliu/edgetunnel/main/_worker.js
+          ls -lh _worker.js
+      - name: Commit updated _worker.js
+        run: |
+          git config user.name "virus0577"
+          git config user.email "virus0577@users.noreply.github.com"
+          git add _worker.js
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "Update _worker.js from cmliu/edgetunnel main (2026-10-08)"
+          git push
